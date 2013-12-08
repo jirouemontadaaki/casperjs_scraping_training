@@ -71,7 +71,7 @@ casper.then(function() {
         var totalCats = 37;
         for(var i=1; i<= totalCats; i++){
                 this.wait(500, (function(cnt){ 
-			// ここの'(function(cnt){'から下記'})(i))'までが即時実行関数とかいうものらしい。
+			// ここの'(function(cnt){'から下記'})(i)'までが即時実行関数とかいうものらしい。
 			// 英語ではImmediately-Invoked Function Expression、略してIIFE。
                         var numStr = '0'+String(cnt)+'0';
                         var inputId = 'input#ctck'+numStr.substring(numStr.length-3, numStr.length);
