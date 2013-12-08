@@ -41,6 +41,7 @@ casper.then(function() {
 
 casper.then(function() {
 	this.mouseEvent('click','div#GB_window div table.header tr td.close div img');
+	// なぜかimgタグをクリックするようにしないとだめ。spanタグだと動かない？
 }).wait(1000);
 //  ようこそwindowを閉じる
 
