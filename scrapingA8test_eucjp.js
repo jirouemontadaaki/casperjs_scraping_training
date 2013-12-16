@@ -1,11 +1,11 @@
-// ¥í¥°¥¤¥óID¤È¥Ñ¥¹¥ï¡¼¥É
-var loginId = 'tonarinomutugorou';
-var loginPSWD = 'llAkcwB92';
-//var kaiinId = '²ñ°÷ID'; // AsID¤¤¤ï¤æ¤ë²ñ°÷ID¡¢Â¿Ê¬¤Ä¤«¤ï¤Ê¤¤
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½È¥Ñ¥ï¿½ï¿½ï¡¼ï¿½ï¿½
+var loginId = '';
+var loginPSWD = '';
+//var kaiinId = 'ï¿½ï¿½ï¿½ID'; // AsIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½Â¿Ê¬ï¿½Ä¤ï¿½ï¿½ï¿½Ê¤ï¿½
 var targetUrl='http://www.a8.net/';
-//var targetUrl='file:///¥í¡¼¥«¥ë¤Ë/ÊÝÂ¸¤·¤¿/¥Õ¥¡¥¤¥ë.html';
-var viewX = 1024; // viewport¤ÎÀßÄê¡§Éý
-var viewY = 768;  // viewport¤ÎÀßÄê¡§¹â¤µ
+//var targetUrl='file:///';
+var viewX = 1024; // viewportï¿½ï¿½ï¿½ï¿½ï¿½ê¡§ï¿½ï¿½
+var viewY = 768;  // viewportï¿½ï¿½ï¿½ï¿½ï¿½ê¡§ï¿½â¤µ
 
 
 var casper = require('casper').create({
@@ -13,7 +13,7 @@ var casper = require('casper').create({
 	logLevel: "debug"
 });
 
-casper.userAgent("Mozilla/5.0 (X11; Linux i686; rv:17.0) Gecko/20130402 Firefox/17.0"); // Linux»ÈÍÑ¤·¤Æ¤ë¤ó¤Ç¤³¤¦¤Ê¤Ã¤Æ¤Þ¤¹¡£Å¬µ¹ÊÑ¹¹¤Í¤¬¤¤¤Þ¤¹
+casper.userAgent("Mozilla/5.0 (X11; Linux i686; rv:17.0) Gecko/20130402 Firefox/17.0"); // Linuxï¿½ï¿½ï¿½Ñ¤ï¿½ï¿½Æ¤ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½ï¿½Ê¤Ã¤Æ¤Þ¤ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½Í¤ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½
 
 
 
@@ -23,12 +23,12 @@ casper.start(targetUrl, function() {
 		'input[name="passwd"]': loginPSWD
 	}, true);
 }).viewport(viewX, viewY);
-//¡¡¤³¤³¤Ç¥í¥°¥¤¥ó
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½
 
 casper.then(function() {
 	this.echo('logged in...');
 }).wait(15000);
-// wait¤ÏÅ¬Åö
+// waitï¿½ï¿½Å¬ï¿½ï¿½
 
 casper.then(function() {
 	this.capture('logged_in.png', {
@@ -37,21 +37,21 @@ casper.then(function() {
 	});
 	
 });
-//¡¡²èÌÌ¥­¥ã¥×¥Á¥ã¡¼¡£ÉÔÍ×¤Ê¤éºï½ü¤Í¤¬¤¤¤Þ¤¹¡£
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ì¥ï¿½ï¿½ï¿½×¥ï¿½ã¡¼ï¿½ï¿½ï¿½ï¿½ï¿½×¤Ê¤ï¿½ï¿½ï¿½Í¤ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½
 
 casper.then(function() {
 	this.mouseEvent('click','div#GB_window div table.header tr td.close div img');
-	// ¤Ê¤¼¤«img¥¿¥°¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤è¤¦¤Ë¤·¤Ê¤¤¤È¤À¤á¡£span¥¿¥°¤À¤ÈÆ°¤«¤Ê¤¤¡©
+	// ï¿½Ê¤ï¿½ï¿½ï¿½imgï¿½ï¿½ï¿½ï¿½ï¿½ò¥¯¥ï¿½Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½è¤¦ï¿½Ë¤ï¿½ï¿½Ê¤ï¿½ï¿½È¤ï¿½á¡£spanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½
 }).wait(1000);
-//  ¤è¤¦¤³¤½window¤òÊÄ¤¸¤ë
+//  ï¿½è¤¦ï¿½ï¿½ï¿½ï¿½windowï¿½ï¿½ï¿½Ä¤ï¿½ï¿½ï¿½
 
 casper.then(function() {
 	this.mouseEvent('click' , 'img#Image2');
-	// ¤Ê¤¼¤«a¥¿¥°¤Ç¤Ï¤Ê¤¯img¥¿¥°¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤³¤È¤Ë¤·¤Ê¤¤¤È¤¦¤´¤«¤Ê¤¤¡£¡£¡£
+	// ï¿½Ê¤ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½Ç¤Ï¤Ê¤ï¿½imgï¿½ï¿½ï¿½ï¿½ï¿½ò¥¯¥ï¿½Ã¥ï¿½ï¿½ï¿½ï¿½ë¤³ï¿½È¤Ë¤ï¿½ï¿½Ê¤ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }).then(function() {
-	this.echo('trying to click ¥×¥í¥°¥é¥à¸¡º÷ menu');
+	this.echo('trying to click ï¿½×¥ï¿½ï¿½ï¿½à¸¡ï¿½ï¿½ menu');
 });
-// ¥×¥í¥°¥é¥à¸¡º÷¤ò¥¯¥ê¥Ã¥¯¡£
+// ï¿½×¥ï¿½ï¿½ï¿½à¸¡ï¿½ï¿½ò¥¯¥ï¿½Ã¥ï¿½ï¿½ï¿½
 
 casper.then(function() {
 	this.capture('program_search_clicked.png' , {
@@ -71,18 +71,18 @@ casper.then(function() {
         var totalCats = 37;
         for(var i=1; i<= totalCats; i++){
                 this.wait(500, (function(cnt){ 
-			// ¤³¤³¤Î'(function(cnt){'¤«¤é²¼µ­'})(i)'¤Þ¤Ç¤¬Â¨»þ¼Â¹Ô´Ø¿ô¤È¤«¤¤¤¦¤â¤Î¤é¤·¤¤¡£
-			// ±Ñ¸ì¤Ç¤ÏImmediately-Invoked Function Expression¡¢Î¬¤·¤ÆIIFE¡£
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'(function(cnt){'ï¿½ï¿½ï¿½é²¼ï¿½ï¿½'})(i)'ï¿½Þ¤Ç¤ï¿½Â¨ï¿½ï¿½ï¿½Â¹Ô´Ø¿ï¿½È¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤é¤·ï¿½ï¿½ï¿½ï¿½
+			// ï¿½Ñ¸ï¿½Ç¤ï¿½Immediately-Invoked Function Expressionï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½IIFEï¿½ï¿½
                         var numStr = '0'+String(cnt)+'0';
                         var inputId = 'input#ctck'+numStr.substring(numStr.length-3, numStr.length);
                         return function(){
                                 this.click(inputId);
-				// HTML¥¿¥°¤È¤«CSS¥×¥í¥Ñ¥Æ¥£¤Î»ØÄê¤ÏÊÌ¤ËÊÑ¿ô¤Ë¤·¤Æ¤â¤¤¤¤¤é¤·¤¤
+				// HTMLï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½CSSï¿½×¥ï¿½Ñ¥Æ¥ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ì¤ï¿½ï¿½Ñ¿ï¿½Ë¤ï¿½ï¿½Æ¤â¤¤ï¿½ï¿½ï¿½é¤·ï¿½ï¿½
                                 }
                 })(i));
         }
 });
-// ¥ë¡¼¥×À®¸ù
+// ï¿½ë¡¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
 casper.then(function() {
 	this.capture('program_categories_all_clicked.png' , {
@@ -94,7 +94,7 @@ casper.then(function() {
 casper.then(function() {
 	this.mouseEvent('click' , 'table#searchTable td.searchBtn a:nth-child(1)');
 });
-// ¡Ö¸¡º÷¡×¥Ü¥¿¥ó¤ò²¡¤¹¡£
+// ï¿½Ö¸ï¿½ï¿½ï¿½×¥Ü¥ï¿½ï¿½ï¿½ò²¡¤ï¿½ï¿½ï¿½
 
 casper.viewport(viewX, 4000,function() {
 	this.echo(this.getCurrentUrl());
@@ -110,40 +110,40 @@ var itemAllLast = 0;
 var itemCurrentLast=0;
 casper.then(function() {
 		 this.emit('A8searchresult.loaded');
-		// ¥«¥¹¥¿¥à¥¤¥Ù¥ó¥È'A8searchresult.loaded'¤òÈ¯¹Ô
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¥¤ï¿½Ù¥ï¿½ï¿½'A8searchresult.loaded'ï¿½ï¿½È¯ï¿½ï¿½
 });
 	
 casper.on('A8searchresult.loaded', function() {
-		// casper.emit('A8searchresult.loaded');¤¬¼Â¹Ô¤µ¤ì¤ë¤È¡¢¤³¤³¤¬¼Â¹Ô¤µ¤ì¤Þ¤¹¡£
+		// casper.emit('A8searchresult.loaded');ï¿½ï¿½ï¿½Â¹Ô¤ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¹Ô¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½
 		this.wait(5000, function(){
 			var bannerText = this.getHTML('span.pagebanner');
-			//¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡=¡¡4607·ï³ºÅö¤·¤Þ¤·¤¿¡£1¤«¤é20·ï¤Þ¤ÇÉ½¼¨¤·¤Þ¤¹¡£¡¡¤À¤è¤Í¡©
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=ï¿½ï¿½4607ï¿½ï³ºï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½20ï¿½ï¿½Þ¤ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½
 			this.echo('bannerText = '+ bannerText);
-			var pattern = /[^0-9]+/; // ¿ô»ú¡Ê\d¡Ë¤À¤±¤È¤ê¤À¤¹
-			var valuesArray = bannerText.split(pattern);  // bannerText¤«¤é¿ôÃÍ¤À¤±¤È¤ê¤À¤·¤Æ¡¢ÇÛÎó¤Ë³ÊÇ¼	
-			//  ºÇ½é¤ÏvaluesArray = { 4607, 1, 20,  }¤Ë¤Ê¤ë¡£4ÈÖ¤á¤ÎÍ×ÁÇ¤Ë¤Ê¤ó¤«Æþ¤ë¤¬µ¤¤Ë¤·¤Ê¤¤¡£
+			var pattern = /[^0-9]+/; // ï¿½ï¿½ï¿½ï¿½\dï¿½Ë¤ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½
+			var valuesArray = bannerText.split(pattern);  // bannerTextï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¤ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½Ç¼	
+			//  ï¿½Ç½ï¿½ï¿½valuesArray = { 4607, 1, 20,  }ï¿½Ë¤Ê¤ë¡£4ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½Ç¤Ë¤Ê¤ï¿½ï¿½ï¿½ï¿½ë¤¬ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½
 			this.capture('search_result'+valuesArray[2]+'.png', {
 				top: 2500, left: 0,
 				width: 1024, height: 764*3
-			}); //  ¥¹¥¯¥·¥ç
+			}); //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			this.echo('total ='+ valuesArray[0]+' , ' + 'current till ' + valuesArray[2]);
-			//  ¸½ºß¤ÏÁ´Éô¤Çx·ï¤¢¤Ã¤Æ¡¢y·ï¤Þ¤ÇÉ½¼¨¤µ¤ì¤Æ¤Þ¤¹¡¢¤È¤¤¤¦É½¼¨¡£
-			itemAllLast = parseInt(valuesArray[0]); // Ê¸»úÎó¤ò¿ô»ú¤Ë¤Ø¤ó¤«¤ó
+			//  ï¿½ï¿½ï¿½ß¤ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¤¢ï¿½Ã¤Æ¡ï¿½yï¿½ï¿½Þ¤ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Þ¤ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½
+			itemAllLast = parseInt(valuesArray[0]); // Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¤Ø¤ó¤«¤ï¿½
 			itemCurrentLast = parseInt(valuesArray[2]);
 			this.click('span.pagelinks a:nth-child(9)');
-			// ¡Ö¼¡¤Î¥Ú¡¼¥¸¡×¤ò¥¯¥ê¥Ã¥¯¡£¤À¤¬¡¢£²£°£±£³¡££±£²¡££±£¶Æü¸½ºß¡¢£´£°·ï¤á¤Þ¤Ç¤Ï¤¤¤¤¤¬¡¢¤½¤Î¤¢¤È¤¬Æ°ºî¤¬¤Ø¤ó¡£
+			// ï¿½Ö¼ï¿½ï¿½Î¥Ú¡ï¿½ï¿½ï¿½ï¿½×¤ò¥¯¥ï¿½Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤Ç¤Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤ï¿½ï¿½È¤ï¿½Æ°ï¿½î¤¬ï¿½Ø¤ï¿½
 		});
 		this.then(function(){
 			this.emit('A8searchresult.nextpage');
-			// ¤³¤³¤Ç¥«¥¹¥¿¥à¥¤¥Ù¥ó¥È'A8searchresult.nextpage'¤òÈ¯¹Ô¡£
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¥¤ï¿½Ù¥ï¿½ï¿½'A8searchresult.nextpage'ï¿½ï¿½È¯ï¿½Ô¡ï¿½
 		});
 });
 
 casper.on('A8searchresult.nextpage', function(){
-//  casper.emit('A8searchresult.nextpage')¤¬¼Â¹Ô¤µ¤ì¡¢¥«¥¹¥¿¥à¥¤¥Ù¥ó¥È'A8searchresult.nextpage'¤¬È¯¹Ô¤µ¤ì¤ë¤È¡¢¤³¤³¤¬¼Â¹Ô¤µ¤ì¤ë¡£
+//  casper.emit('A8searchresult.nextpage')ï¿½ï¿½ï¿½Â¹Ô¤ï¿½ï¿½ì¡¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¥¤ï¿½Ù¥ï¿½ï¿½'A8searchresult.nextpage'ï¿½ï¿½È¯ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¹Ô¤ï¿½ï¿½ï¿½ë¡£
 		this.then(function(){
 			if (itemAllLast > itemCurrentLast){
-			//  ¸½ºß¤ÎÉ½¼¨¤ÎºÇ¸å¡ÊitemCurrentLast¡Ë¤¬Á´·ï¤ÎºÇ¸å(itemAllLast)¤è¤ê¤â¾®¤µ¤¤¡á¤Þ¤ÀÁ´·ï¤ÎºÇ¸å¤Þ¤ÇÉ½¼¨¤µ¤ì¤Æ¤Ê¤¤¤Ê¤é¤Ð¡¢¥«¥¹¥¿¥à¥¤¥Ù¥ó¥È'A8searchresult.loaded'¤òÈ¯¹Ô¤·¤Æ¡¢°ú¤­Â³¤­½èÍý¤òÂ³¹Ô¡£
+			//  ï¿½ï¿½ï¿½ß¤ï¿½É½ï¿½ï¿½ï¿½ÎºÇ¸ï¿½ï¿½itemCurrentLastï¿½Ë¤ï¿½ï¿½ï¿½ï¿½ÎºÇ¸ï¿½(itemAllLast)ï¿½ï¿½ï¿½â¾®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ÎºÇ¸ï¿½Þ¤ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ê¤ï¿½ï¿½Ê¤ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¥¤ï¿½Ù¥ï¿½ï¿½'A8searchresult.loaded'ï¿½ï¿½È¯ï¿½Ô¤ï¿½ï¿½Æ¡ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½Ô¡ï¿½
 				this.emit('A8searchresult.loaded');
 			}
 		});
