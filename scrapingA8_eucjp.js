@@ -1,12 +1,12 @@
 // ログインIDとパスワード
-var loginId = 'あなたのid';
+var loginId = 'あなたのID';
 var loginPSWD = 'あなたのパスワード';
 //var kaiinId = '会員ID'; // AsIDいわゆる会員ID、多分つかわない
 var targetUrl='http://www.a8.net/';
 //var targetUrl='file:///ローカルに/保存した/ファイル.html';
 var viewX = 1024; // viewportの設定：幅
 var viewY = 768;  // viewportの設定：高さ
-
+var flag = 0; // ページロード時の動作指定。
 
 var casper = require('casper').create({
 	verbose: true,
@@ -92,7 +92,7 @@ casper.then(function() {
 });
 
 casper.then(function() {
-	this.mouseEvent('click' , 'table#searchTable td.searchBtn a:nth-child(1)');
+	this.then(function() { flag = 1; }).mouseEvent('click' , 'table#searchTable td.searchBtn a:nth-child(1)');
 });
 // 「検索」ボタンを押す。
 
@@ -120,20 +120,30 @@ casper.on('A8searchresult.loaded', function(){
 			itemAllLast = parseInt(valuesArray[0]);
 			itemCurrentLast = parseInt(valuesArray[2]);
 			this.echo('total ='+ valuesArray[0]+' , ' + 'current till ' + valuesArray[2]);
-			this.capture('search_result'+String(valuesArray[2])+'.png', {
-				top: 0, left: 0,
-				width: viewX, height: viewY
-			}); //  スクショ
-			this.click('span.pagelinks a:nth-child(9)'); 
-			this.emit('A8searchresult.nextpage');
+			this.then(function(){
+				this.capture('search_result'+String(valuesArray[2])+'.png', {
+					top: 2500, left: 0,
+					width: viewX, height: viewY*3
+				}); //  スクショ
+			});
+			this.then(function(){
+				this.emit('A8searchresult.nextpage');
+			});
 	});
 });
 
 casper.on('A8searchresult.nextpage', function(){
 		if (itemAllLast > itemCurrentLast){
+			if(itemCurrentLast <= 21){
+				this.click('span.pagelinks a:nth-child(9)');
+				// 一番最初の検索結果表示画面の時にクリックするリンク
+			} else {
+				this.click('span.pagelinks a:nth-child(11)');
+				//  [次のページ]を押して表示された画面の場合にクリックするリンク
+			}
 			this.emit('A8searchresult.loaded');
 		}
 });
-	
+
 
 casper.run();
