@@ -4,7 +4,7 @@ var loginId = 'あなたのID';
 var loginPSWD = 'あなたのパスワード';
 //var kaiinId = '会員ID'; // AsIDいわゆる会員ID、多分つかわない
 //var targetUrl='http://www.a8.net/';
-var targetUrl='file:///ローカルに/保存した/ファイル.html';
+var targetUrl='file:///home/madabang/casperjs_scripts/a8/search_result/asSearchAction.do.html';
 var viewX = 1024; // viewportの設定：幅
 var viewY = 768;  // viewportの設定：高さ
 var flag = 0; // ページロード時の動作指定。
@@ -55,36 +55,36 @@ function getLines(){
 		var j=0;
 		
 			line += detailTableObj.rows[j++].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");//広告主
-			line += " , ";
+			line += " ^Z ";
 			line += detailTableObj.rows[j].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// プログラム名
-			line += " , ";
+			line += " ^Z ";
 			line += /(s\d{14})/.exec(detailTableObj.rows[j++].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;"))[0];// プログラムＩＤ
-			line += " , ";
+			line += " ^Z ";
 			line += detailTableObj.rows[j++].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 対応デバイス
-			line += " , ";
+			line += " ^Z ";
 			line += detailTableObj.rows[j++].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 成果報酬
-			line += " , ";
+			line += " ^Z ";
 			var imgObj = detailTableObj.rows[j].cells[0].getElementsByTagName('img')[0];
 			if (imgObj != null && /campaign\.gif/.test(imgObj.src) == true){
 				line += detailTableObj.rows[j++].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, "").replace(/\"/g, "").replace(/\'/g, "&sq;");// キャンペーン中
 			}
-			line += ' , '; 
+			line += ' ^Z '; 
 			line += detailTableObj.rows[j].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 提携審査
-			line += " , ";
+			line += " ^Z ";
 			line += detailTableObj.rows[j].cells[3].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 再訪問期間
 			//console.log('再訪問期間');
-			line += " , ";
+			line += " ^Z ";
 			line += detailTableObj.rows[j++].cells[5].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 成果確定目安
-			line += " , ";
+			line += " ^Z ";
 			line += detailTableObj.rows[j++].cells[1].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// キーワード
-			line += " , ";
+			line += " ^Z ";
 			line += detailTableObj.rows[j++].cells[0].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// アイコンエリア１
-			line += " , ";
+			line += " ^Z ";
 		
 		line += obj.cells[2].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 関連情報（アイコンエリア２）
-			line += " , ";
+			line += " ^Z ";
 		line += obj.cells[3].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 提携対応（アイコンエリア３）
-			line += " , ";
+			line += " ^Z ";
 		line += obj.cells[4].innerHTML.replace(/\n/g, "").replace(/\t/g, "").replace(/\ +/g, " ").replace(/\"/g, "&dq;").replace(/\'/g, "&sq;");// 一括申し込み（ちぇっくぼっくす）
 		
 		//console.log(line)
