@@ -4,7 +4,7 @@ var con = mysql.createConnection({
 		host: 'localhost',
 		database: 'db_nodejs',
 		user: 'webapp',
-		password: 'webpass567'
+		password: 'ひみつ'
 });
 var query = "";
 
@@ -14,7 +14,7 @@ http.createServer(function (req, res) {
 	req.setEncoding('utf8');
 	if (req.method == 'POST'){
 		req.on('data', function(chunk){
-			var columns = decodeURIComponent(chunk.toString()).replace(/csv=/, "").split(' ^Z ');
+			var columns = decodeURIComponent(chunk.toString().split("=")[1]).split(' ^Z ');
 			var insertQry = "insert into programdetail ( sponser, progname, progid, device, reward, campaign, sensorship, vperiod, gmeasure, keywords, icon1, relinfo, teikei, checkbox) values('"+columns[0]+"', '"+columns[1]+"','"+columns[2]+"','"+columns[3]+"','"+columns[4]+"','"+columns[5]+"','"+columns[6]+"','"+columns[7]+"','"+columns[8]+"','"+columns[9]+"','"+columns[10]+"','"+columns[11]+"','"+columns[12]+"','"+columns[13]+"');";
 			console.log('create new row : ' + insertQry);
 			query = con.query(insertQry); // query 発行
@@ -24,7 +24,9 @@ http.createServer(function (req, res) {
   				.on('end_insert', function() {connection.destroy()}) //終了
 		
 								    	
+			
 		});
+	
 		
 	}
 }).listen(1234, '127.0.0.1');
