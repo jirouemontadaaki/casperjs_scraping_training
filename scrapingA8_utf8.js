@@ -173,6 +173,22 @@ casper.then(function(){
 		this.emit('A8searchresult.loaded');
 });
 
+casper.then(function(){
+		// データを全部スクレイピングしたよー
+		this.Open('http://localhost:1234', {
+				method: 'post',
+				data:  {
+					'csv': 'end_of_records'
+					// これがnodeのサーバに送信されると、データ累積用テーブルprogramdetail_masterが更新される
+				},
+				headers: {
+					'contentType': 'text/html; charset=UTF-8',
+					'Accept-Language': 'ja,en-us;q=0.7,en;q=0.3'
+				}
+
+		}).back();// ばっくしま～す！。	不要かも
+});
+
 casper.on('A8searchresult.loaded', function(){
 	this.wait(10000, function(){
 			var bannerText = this.getHTML('span.pagebanner');
