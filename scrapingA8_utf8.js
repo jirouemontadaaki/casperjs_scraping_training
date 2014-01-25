@@ -175,7 +175,7 @@ casper.then(function(){
 
 casper.then(function(){
 		// データを全部スクレイピングしたよー
-		this.Open('http://localhost:1234', {
+		this.open('http://localhost:1234', {
 				method: 'post',
 				data:  {
 					'csv': 'end_of_records'
